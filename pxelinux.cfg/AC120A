@@ -1,0 +1,18 @@
+DEFAULT vesamenu.c32
+MENU INCLUDE pxelinux.cfg/standard-menu-options.conf
+ONTIMEOUT ubuntu1604_ps
+
+LABEL ubuntu1604_ps
+    MENU LABEL Ubuntu 16.04.X ^PreSeeded
+    KERNEL ubuntu/16.04.3/linux
+    APPEND initrd=ubuntu/16.04.3/initrd.gz DEBCONF_DEBUG=5 locale=en_US.UTF-8 keyboard-configuration/layoutcode=us url=http://infr-mirror1.ccollab.net/repo/ks/ubuntu/al/./preseed.cfg partman-auto/disk=/dev/sdk grub-installer/bootdev=/dev/sdk hostname=unassigned interface=eno1
+
+LABEL ubuntu1604
+    MENU LABEL ^Ubuntu 16.04.X
+    KERNEL ubuntu/16.04.3/linux
+    APPEND initrd=ubuntu/16.04.3/initrd.gz -- ks=http://infr-mirror1.ccollab.net/repo/ks/ks-ubuntu.cfg ksdevice=bootif IPAPPEND 2
+
+LABEL ubuntu1604_ps_vm
+    MENU LABEL Ubuntu 16.04.X ^PreSeeded VM
+    KERNEL ubuntu/16.04.3/linux
+    APPEND initrd=ubuntu/16.04.3/initrd.gz DEBCONF_DEBUG=5 locale=en_US.UTF-8 keyboard-configuration/layoutcode=us url=http://infr-mirror1.ccollab.net/repo/ks/ubuntu/al/./preseed.cfg partman-auto/disk=/dev/vda grub-installer/bootdev=/dev/vda hostname=unassigned interface=eno1

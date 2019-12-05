@@ -1,0 +1,14 @@
+DEFAULT vesamenu.c32
+MENU INCLUDE pxelinux.cfg/standard-menu-options.conf
+ONTIMEOUT install_64bit_vmov
+
+LABEL install_64bit_vmv
+    MENU LABEL CentOS 7.0 (64-bit) Install ^Jumpstation VM (VirtIO Disk)
+    KERNEL centos/7.5/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-jump.cfg initrd=centos/7.5/initrd.img ramdisk_size=100000 TARGETDISK=vda SALTROLE=jumpstation DOMAINNAME=jump.ccollab.net
+
+LABEL install_64bit_vms
+    MENU LABEL CentOS 7.0 (64-bit) Install Jumpstation KVM VM (std ^scsi disk)
+    KERNEL centos/7.5/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-jump.cfg initrd=centos/7.5/initrd.img ramdisk_size=100000 TARGETDISK=sda SALTROLE=jumpstation DOMAINNAME=jump.ccollab.net 
+

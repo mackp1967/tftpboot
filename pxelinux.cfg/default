@@ -1,0 +1,33 @@
+DEFAULT vesamenu.c32
+MENU INCLUDE pxelinux.cfg/standard-menu-options.conf
+
+LABEL install_64bit
+    MENU LABEL CentOS 7 (64-bit) Install (New Modular Interactive ^GPU)
+    KERNEL centos/7.7/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/kickstart/ks-gpu.cfg.php initrd=centos/7.7/initrd.img ramdisk_size=100000
+
+LABEL install_64bit_atomic_vm
+    MENU LABEL CentOS 7 (64-bit) ^Atomic Install VM
+    KERNEL centos/7.7/atomic/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-vm76-atomic.cfg inst.stage2=http://infr-mirror1.ccollab.net/repo/CentOS/7/atomic/x86_64/repo/repo initrd=centos/7.5/atomic/initrd.img ramdisk_size=100000
+
+LABEL install_64bit_virt
+    MENU LABEL CentOS 7 (64-bit) Install ^Virt Hypervisor (Bare Metal)
+    KERNEL centos/7.7/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-ovirt.cfg initrd=centos/7.7/initrd.img ramdisk_size=100000 ip=em1:dhcp
+
+LABEL install_64bit_ministack
+    MENU LABEL CentOS 7 (64-bit) Install Mini ^Stack (Bare Metal)
+    KERNEL centos/7.7/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-ministack.cfg initrd=centos/7.7/initrd.img ramdisk_size=100000 ip=em1:dhcp
+
+LABEL install_64bit_novirt
+    MENU LABEL CentOS 7 (64-bit) Install Non-Hypervisor (^Bare Metal)
+    KERNEL centos/7.7/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-novirt.cfg initrd=centos/7.7/initrd.img ramdisk_size=100000
+
+LABEL ubuntu1604_ps
+    MENU LABEL Ubuntu 16.04.X ^PreSeeded
+    KERNEL ubuntu/16.04.3/linux
+    APPEND initrd=ubuntu/16.04.3/initrd.gz DEBCONF_DEBUG=5 locale=en_US.UTF-8 keyboard-configuration/layoutcode=us url=http://infr-mirror1.ccollab.net/repo/ks/ubuntu/al/./preseed.cfg partman-auto/disk=/dev/sdk grub-installer/bootdev=/dev/sdk hostname=unassigned
+

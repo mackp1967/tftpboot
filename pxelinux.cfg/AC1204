@@ -1,0 +1,14 @@
+DEFAULT vesamenu.c32
+MENU INCLUDE pxelinux.cfg/standard-menu-options.conf
+ONTIMEOUT install_64bit_vm
+
+LABEL install_64bit_vmov
+    MENU LABEL CentOS 7.0 (64-bit) Install VM (^oVirt - using virtio-scsi boot disk)
+    KERNEL centos/7.4/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-vm-ovirt.cfg initrd=centos/7.4/initrd.img ramdisk_size=100000
+
+LABEL install_64bit_vmov2
+    MENU LABEL CentOS 7.0 (64-bit) Install VM (oVirt - using ^virtio boot disk)
+    KERNEL centos/7.4/vmlinuz
+    APPEND ks=http://infr-mirror1.ccollab.net/repo/ks/ks-vm2.cfg initrd=centos/7.4/initrd.img ramdisk_size=100000
+
